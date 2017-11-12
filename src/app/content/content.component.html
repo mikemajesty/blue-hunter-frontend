@@ -1,3 +1,2 @@
-<body>
-	temp
-</body>
+<button (click)="getBooksByTitle('a')" class="liButton btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>FIND BY AUTHOR</button>
+<div *ngFor="let item of booksByTitle">{{item.author}}</div>
