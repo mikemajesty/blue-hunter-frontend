@@ -1,4 +1,4 @@
-<button (click)="getBooksByTitle('u')" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>BOOKS BY TITLE</button>
+<button (click)="getBooksByTitle('a')" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>BOOKS BY TITLE</button>
 <button (click)="getCustomersByAuthor('u')" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>BOOKS BY AUTHOR</button>
 <div *ngFor="let item of booksByAuthor">{{item.author}}</div>
 <button (click)="getCustomersByName('u')" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>CUSTOMER BY NAME</button>
@@ -23,11 +23,3 @@
   </div>
 </div>
 <hr>
-<div class="me grow">
-    <a href="#" target="_blank" class="paw">
-      <i class="fa fa-code fa-2x"> </i> with <i class="fa fa-heart fa-2x"></i> by Mike Lima &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-      <i class="fa fa-paw fa-2x"></i> visit my portfolio 
-  </a>
-  <h6> * books not for sale</h6>
-</div>
