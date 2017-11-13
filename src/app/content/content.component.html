@@ -1,6 +1,6 @@
-<button (click)="getBooksByTitle('u')" class="liButton btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>BOOKS BY TITLE</button>
+<button (click)="getBooksByTitle('u')" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>BOOKS BY TITLE</button>
 <div *ngFor="let item of booksByTitle">{{item.title}}</div>
-<button (click)="getCustomersByAuthor('u')" class="liButton btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>BOOKS BY AUTHOR</button>
+<button (click)="getCustomersByAuthor('u')" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>BOOKS BY AUTHOR</button>
 <div *ngFor="let item of booksByAuthor">{{item.author}}</div>
-<button (click)="getCustomersByName('u')" class="liButton btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>CUSTOMER BY NAME</button>
+<button (click)="getCustomersByName('u')" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>CUSTOMER BY NAME</button>
 <div *ngFor="let item of customersByTitle">{{item.fullName}}</div>
