@@ -9,7 +9,9 @@ import { HttpClient } from '@angular/common/http';
 
 export class ContentComponent implements OnInit {
 
-  booksByTitle: Array<any>;
+  private booksByTitle: Array<any>;
+  private customersByTitle: Array<any>;
+  private booksByAuthor: Array<any>;
 
   constructor(private http: HttpClient) {
   }
@@ -20,6 +22,18 @@ export class ContentComponent implements OnInit {
   getBooksByTitle(item) {
     this.http.get(`https://blue-hunter-backend-api.herokuapp.com/book/by-title/${item}`).subscribe(data => {
       this.booksByTitle = <Array<any>>data;
+    });
+  }
+
+  getCustomersByName(item) {
+    this.http.get(`https://blue-hunter-backend-api.herokuapp.com/user/by-name/${item}`).subscribe(data => {
+      this.customersByTitle = <Array<any>>data;
+    });
+  }
+
+  getCustomersByAuthor(item) {
+    this.http.get(`https://blue-hunter-backend-api.herokuapp.com/book/by-author/${item}`).subscribe(data => {
+      this.booksByAuthor = <Array<any>>data;
     });
   }
 }
