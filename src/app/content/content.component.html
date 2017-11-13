@@ -4,3 +4,32 @@
 <div *ngFor="let item of booksByAuthor">{{item.author}}</div>
 <button (click)="getCustomersByName('u')" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>CUSTOMER BY NAME</button>
 <div *ngFor="let item of customersByTitle">{{item.fullName}}</div>
+<div class="main">
+  <div class="container">
+    <h1 class="grow">title</h1>
+    <hr>
+    <h2 class="grow">promo</h2>
+    <hr>
+    <div ng-repeat="product in products" class="col-md-6">
+      <div class="thumbnail">
+        <img ng-src="#">
+        <p class="title">name</p>
+        <p class="price grow">price</p>
+        <p class="date">date</p>
+        <div class="rating">
+          <p class="likes">+ like </p>
+          <p class="dislikes">- deslike </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="me grow">
+    <a href="#" target="_blank" class="paw">
+      <i class="fa fa-code fa-2x"> </i> with <i class="fa fa-heart fa-2x"></i> by Mike Lima &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+      <i class="fa fa-paw fa-2x"></i> visit my portfolio 
+  </a>
+  <h6> * books not for sale</h6>
+</div>
