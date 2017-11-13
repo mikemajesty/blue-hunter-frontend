@@ -1,24 +1,22 @@
 <button (click)="getBooksByTitle('u')" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>BOOKS BY TITLE</button>
-<div *ngFor="let item of booksByTitle">{{item.title}}</div>
 <button (click)="getCustomersByAuthor('u')" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>BOOKS BY AUTHOR</button>
 <div *ngFor="let item of booksByAuthor">{{item.author}}</div>
 <button (click)="getCustomersByName('u')" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i>CUSTOMER BY NAME</button>
 <div *ngFor="let item of customersByTitle">{{item.fullName}}</div>
 <div class="main">
   <div class="container">
-    <h1 class="grow">title</h1>
+    <h1 class="grow">Blue Hunter</h1>
     <hr>
-    <h2 class="grow">promo</h2>
+    <h2 class="grow">Bookstore</h2>
     <hr>
-    <div ng-repeat="product in products" class="col-md-6">
+    <div *ngFor="let books of booksByTitle" class="col-md-6">
       <div class="thumbnail">
-        <img ng-src="#">
-        <p class="title">name</p>
-        <p class="price grow">price</p>
-        <p class="date">date</p>
+        <img src="{{ books.img }}">
+        <p class="title">{{ books.title }}</p>
+        <p class="price grow">{{ books.price | currency}}</p>
+        <p class="date">{{ books.yearPublished }}</p>
         <div class="rating">
-          <p class="likes">+ like </p>
-          <p class="dislikes">- deslike </p>
+          <h3> <span class="label label-default">{{ books.author }}</span></h3>
         </div>
       </div>
     </div>
