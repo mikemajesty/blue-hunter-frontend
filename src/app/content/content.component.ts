@@ -9,11 +9,12 @@ import { HttpClient } from '@angular/common/http';
 
 export class ContentComponent implements OnInit {
 
-  private booksByTitle: Array<any>;
   private customersByTitle: Array<any>;
-  private booksByAuthor: Array<any>;
+  private searchBooks: Array<any>;
   private searchFilter: Array<string> = ['author', 'title', 'customer'];
-  private filter: string = '';
+  private filter: string = 'author';
+  public loading = false;
+  private search: string;
 
   constructor(private http: HttpClient) {
   }
@@ -22,25 +23,40 @@ export class ContentComponent implements OnInit {
   }
 
   onChange(val){
-    console.log('afff', val);
     this.filter = val;
   }
 
-  getBooksByTitle(item) {
-    this.http.get(`https://blue-hunter-backend-api.herokuapp.com/book/by-title/${item}`).subscribe(data => {
-      this.booksByTitle = <Array<any>>data;
-    });
-  }
+  searchByParameters() {
+    if (this.filter.toLowerCase() === 'author') {
+      console.log('search by author', this.search);
+      this.loading = true;
+        this.http.get(`https://blue-hunter-backend-api.herokuapp.com/book/by-title/${this.search}`).subscribe(data => {
+        this.searchBooks = <Array<any>>data;
+        console.log(this.searchBooks.length);
+        this.loading = false;
+      });
+      return;
+    }
 
-  getCustomersByName(item) {
-    this.http.get(`https://blue-hunter-backend-api.herokuapp.com/user/by-name/${item}`).subscribe(data => {
-      this.customersByTitle = <Array<any>>data;
-    });
-  }
+    if (this.filter.toLowerCase() === 'title') {
+      console.log('search by title', this.search);
+      this.loading = true;
+      this.http.get(`https://blue-hunter-backend-api.herokuapp.com/book/by-author/${this.search}`).subscribe(data => {
+        this.searchBooks = <Array<any>>data;
+        console.log(this.searchBooks.length);
+        this.loading = false;
+      });
+      return;
+    }
 
-  getCustomersByAuthor(item) {
-    this.http.get(`https://blue-hunter-backend-api.herokuapp.com/book/by-author/${item}`).subscribe(data => {
-      this.booksByAuthor = <Array<any>>data;
-    });
+    if (this.filter.toLowerCase() === 'customer') {
+      console.log('search by customer');
+      this.loading = true;
+      this.http.get(`https://blue-hunter-backend-api.herokuapp.com/user/by-name/${this.search}`).subscribe(data => {
+        this.customersByTitle = <Array<any>>data;
+        this.loading = false;
+      });
+      return;
+    }
   }
 }

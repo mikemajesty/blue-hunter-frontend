@@ -5,6 +5,9 @@
     <div class="container">
 	<div class="row">
 		<div class="col-md-12">
+      <div class="my-container">
+          <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+      </div>
       <div class="input-group">
           <input type="text"  style="border: 0; background: #F2F2F2; font-family: cursive; width:100%; font-weight" value="WHERE YOU NEVER PAY FULL PRICE FOR ANYTHING." data-toggle="dropdown" aria-expanded="false" readonly="true"/>
           <div class="input-group-btn">
@@ -20,9 +23,9 @@
                       </select>
                     </div>
                     <div class="form-group">
-                      <input class="form-control" placeholder="SEARCH FOR {{ (filter || 'author') | uppercase}}" type="text" />
+                      <input class="form-control" name="search" [(ngModel)]="search" placeholder="SEARCH FOR {{ (filter || 'author') | uppercase}}" type="text" />
                     </div>
-                    <button style="width: 100%; border-radius: 25px;" (click)="getBooksByTitle('a')" type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    <button style="width: 100%; border-radius: 25px;" (click)="searchByParameters()" type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                   </form>
                 </div>
               </div>
@@ -33,7 +36,7 @@
     </div>
 	</div>
     <hr>
-    <div *ngFor="let books of booksByTitle" class="col-md-6">
+    <div *ngFor="let books of searchBooks" class="col-md-6">
       <div class="thumbnail">
         <img src="{{ books.img }}">
         <p class="title">{{ books.title }}</p>
