@@ -23,9 +23,9 @@
                       </select>
                     </div>
                     <div class="form-group">
-                      <input class="form-control" name="search" [(ngModel)]="search" placeholder="SEARCH FOR {{ (filter || 'author') | uppercase}}" type="text" />
+                      <input class="form-control" autocomplete="off" name="search" [(ngModel)]="search" placeholder="SEARCH FOR {{ (filter || 'author') | uppercase}}" type="text" />
                     </div>
-                    <button style="width: 100%; border-radius: 25px;" (click)="searchByParameters()" type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    <button style="width: 100%; border-radius: 25px;" [disabled]="!search" (click)="searchByParameters()" type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                   </form>
                 </div>
               </div>
@@ -36,7 +36,7 @@
     </div>
 	</div>
     <hr>
-    <div *ngFor="let books of searchBooks" class="col-md-6">
+    <div *ngFor="let books of searchBooks" class="col-md-6" [hidden]="!searchBooks">
       <div class="thumbnail">
         <img src="{{ books.img }}">
         <p class="title">{{ books.title }}</p>
@@ -45,6 +45,11 @@
         <div class="rating">
           <h3> <span class="label label-default">{{ books.author }}</span></h3>
         </div>
+      </div>
+    </div>
+    <div [hidden]="!showMessage" class="col-md-12" >
+      <div class="alert alert-info">
+        <strong>Info!</strong> No records found.
       </div>
     </div>
   </div>

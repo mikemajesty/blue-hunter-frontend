@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { CommonModule } from "@angular/common";
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
@@ -19,7 +20,8 @@ import { LoadingModule } from 'ngx-loading';
     HttpClientModule,
     BrowserAnimationsModule,
     LoadingModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent, ContentComponent]

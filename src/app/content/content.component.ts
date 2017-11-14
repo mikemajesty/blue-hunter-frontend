@@ -15,8 +15,10 @@ export class ContentComponent implements OnInit {
   private filter: string = 'author';
   public loading = false;
   private search: string;
+  private showMessage: boolean = false;
 
   constructor(private http: HttpClient) {
+    
   }
  
   ngOnInit(): void {
@@ -27,24 +29,35 @@ export class ContentComponent implements OnInit {
   }
 
   searchByParameters() {
+   
     if (this.filter.toLowerCase() === 'author') {
-      console.log('search by author', this.search);
-      this.loading = true;
-        this.http.get(`https://blue-hunter-backend-api.herokuapp.com/book/by-title/${this.search}`).subscribe(data => {
+      this.loading = false;
+      this.http.get(`https://blue-hunter-backend-api.herokuapp.com/book/by-author/${this.search}`).subscribe(data => {
+        this.showMessage = false;
         this.searchBooks = <Array<any>>data;
-        console.log(this.searchBooks.length);
+        if (this.searchBooks.length === 0) 
+          this.showMessage = true;
+        this.loading = false;
+      },
+      error => {
+        this.showMessage = true;
         this.loading = false;
       });
       return;
     }
 
     if (this.filter.toLowerCase() === 'title') {
-      console.log('search by title', this.search);
       this.loading = true;
-      this.http.get(`https://blue-hunter-backend-api.herokuapp.com/book/by-author/${this.search}`).subscribe(data => {
+      this.http.get(`https://blue-hunter-backend-api.herokuapp.com/book/by-title/${this.search}`).subscribe(data => {
+        this.showMessage = false;
         this.searchBooks = <Array<any>>data;
-        console.log(this.searchBooks.length);
+        if (this.searchBooks.length === 0) 
+          this.showMessage = true;
         this.loading = false;
+      },
+      error => {
+        this.loading = false;
+        this.showMessage = true;
       });
       return;
     }
@@ -55,6 +68,10 @@ export class ContentComponent implements OnInit {
       this.http.get(`https://blue-hunter-backend-api.herokuapp.com/user/by-name/${this.search}`).subscribe(data => {
         this.customersByTitle = <Array<any>>data;
         this.loading = false;
+      },
+      error => {
+        this.loading = false;
+        this.showMessage = true;
       });
       return;
     }
