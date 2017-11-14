@@ -31,6 +31,7 @@ export class ContentComponent implements OnInit {
   searchByParameters() {
    
     if (this.filter.toLowerCase() === 'author') {
+      this.customersByTitle = [];
       this.loading = false;
       this.http.get(`https://blue-hunter-backend-api.herokuapp.com/book/by-author/${this.search}`).subscribe(data => {
         this.showMessage = false;
@@ -47,6 +48,7 @@ export class ContentComponent implements OnInit {
     }
 
     if (this.filter.toLowerCase() === 'title') {
+      this.customersByTitle = [];
       this.loading = true;
       this.http.get(`https://blue-hunter-backend-api.herokuapp.com/book/by-title/${this.search}`).subscribe(data => {
         this.showMessage = false;
@@ -63,10 +65,13 @@ export class ContentComponent implements OnInit {
     }
 
     if (this.filter.toLowerCase() === 'customer') {
-      console.log('search by customer');
+      this.searchBooks = [];
       this.loading = true;
       this.http.get(`https://blue-hunter-backend-api.herokuapp.com/user/by-name/${this.search}`).subscribe(data => {
+        this.showMessage = false;
         this.customersByTitle = <Array<any>>data;
+        if (this.customersByTitle.length === 0) 
+          this.showMessage = true;
         this.loading = false;
       },
       error => {

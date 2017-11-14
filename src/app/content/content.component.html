@@ -1,4 +1,3 @@
-<div *ngFor="let item of customersByTitle">{{item.fullName}}</div>
 <div class="main">
   <div class="container">
     <h1 class="grow">Bookstore - Blue Hunter</h1>
@@ -45,6 +44,16 @@
         <div class="rating">
           <h3> <span class="label label-default">{{ books.author }}</span></h3>
         </div>
+      </div>
+    </div>
+    <div *ngFor="let customer of customersByTitle" class="col-md-6" [hidden]="!customersByTitle">
+      <div class="thumbnail">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcI-ApilHRx_ksGajLfFeAYovTJQAG_9cBonYqaEC77ZjTeu3fbg" alt="Customer" class="rounded">
+        <p class="title">{{ customer.fullName }}</p>
+        <p class="price grow">{{ customer.age}}</p>
+        <p class="date">{{ customer.email }}</p>
+        <p class="date">{{ customer.phone }}</p>
+        <p class="date">{{ customer.gender | uppercase }}</p>
       </div>
     </div>
     <div [hidden]="!showMessage" class="col-md-12" >
