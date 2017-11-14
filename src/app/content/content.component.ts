@@ -12,38 +12,38 @@ export class ContentComponent implements OnInit {
   public customersByTitle: Array<any>;
   public searchBooks: Array<any>;
   public searchFilter: Array<string> = ['author', 'title', 'customer'];
-  public filter: string = 'author';
+  public filter = 'author';
   public loading = false;
   public search: string;
-  public showMessage: boolean = false;
+  public showMessage = false;
 
   constructor(private http: HttpClient) {
-    
+
   }
- 
+
   ngOnInit(): void {
   }
 
-  onChange(val){
+  onChange(val) {
     this.filter = val;
   }
 
   searchByParameters() {
-   
+
     if (this.filter.toLowerCase() === 'author') {
       this.customersByTitle = [];
-      this.loading = false;
+      this.loading = true;
       this.http.get(`https://blue-hunter-backend-api.herokuapp.com/book/by-author/${this.search}`).subscribe(data => {
         this.showMessage = false;
         this.searchBooks = <Array<any>>data;
-        if (this.searchBooks.length === 0) 
+        if (this.searchBooks.length === 0)
           this.showMessage = true;
         this.loading = false;
       },
-      error => {
-        this.showMessage = true;
-        this.loading = false;
-      });
+        error => {
+          this.showMessage = true;
+          this.loading = false;
+        });
       return;
     }
 
@@ -53,14 +53,14 @@ export class ContentComponent implements OnInit {
       this.http.get(`https://blue-hunter-backend-api.herokuapp.com/book/by-title/${this.search}`).subscribe(data => {
         this.showMessage = false;
         this.searchBooks = <Array<any>>data;
-        if (this.searchBooks.length === 0) 
+        if (this.searchBooks.length === 0)
           this.showMessage = true;
         this.loading = false;
       },
-      error => {
-        this.loading = false;
-        this.showMessage = true;
-      });
+        error => {
+          this.loading = false;
+          this.showMessage = true;
+        });
       return;
     }
 
@@ -70,14 +70,14 @@ export class ContentComponent implements OnInit {
       this.http.get(`https://blue-hunter-backend-api.herokuapp.com/user/by-name/${this.search}`).subscribe(data => {
         this.showMessage = false;
         this.customersByTitle = <Array<any>>data;
-        if (this.customersByTitle.length === 0) 
+        if (this.customersByTitle.length === 0)
           this.showMessage = true;
         this.loading = false;
       },
-      error => {
-        this.loading = false;
-        this.showMessage = true;
-      });
+        error => {
+          this.loading = false;
+          this.showMessage = true;
+        });
       return;
     }
   }
