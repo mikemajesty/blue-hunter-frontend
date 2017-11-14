@@ -9,13 +9,13 @@ import { HttpClient } from '@angular/common/http';
 
 export class ContentComponent implements OnInit {
 
-  private customersByTitle: Array<any>;
-  private searchBooks: Array<any>;
-  private searchFilter: Array<string> = ['author', 'title', 'customer'];
-  private filter: string = 'author';
+  public customersByTitle: Array<any>;
+  public searchBooks: Array<any>;
+  public searchFilter: Array<string> = ['author', 'title', 'customer'];
+  public filter: string = 'author';
   public loading = false;
-  private search: string;
-  private showMessage: boolean = false;
+  public search: string;
+  public showMessage: boolean = false;
 
   constructor(private http: HttpClient) {
     
