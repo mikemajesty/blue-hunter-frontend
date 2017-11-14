@@ -48,9 +48,9 @@
     </div>
     <div *ngFor="let customer of customersByTitle" class="col-md-6" [hidden]="!customersByTitle">
       <div class="thumbnail">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcI-ApilHRx_ksGajLfFeAYovTJQAG_9cBonYqaEC77ZjTeu3fbg" alt="Customer" class="rounded">
+        <img style="border-radius: 25px;" [src]="customer.gender === 'female' ? 'https://bootdey.com/img/Content/avatar/avatar3.png' : 'https://bootdey.com/img/Content/avatar/avatar2.png'" alt="Customer" class="rounded">
         <p class="title">{{ customer.fullName }}</p>
-        <p class="price grow">{{ customer.age}}</p>
+        <p class="price grow">{{ customer.age }}</p>
         <p class="date">{{ customer.email }}</p>
         <p class="date">{{ customer.phone }}</p>
         <p class="date">{{ customer.gender | uppercase }}</p>
