@@ -12,11 +12,18 @@ export class ContentComponent implements OnInit {
   private booksByTitle: Array<any>;
   private customersByTitle: Array<any>;
   private booksByAuthor: Array<any>;
+  private searchFilter: Array<string> = ['author', 'title', 'customer'];
+  private filter: string = '';
 
   constructor(private http: HttpClient) {
   }
  
   ngOnInit(): void {
+  }
+
+  onChange(val){
+    console.log('afff', val);
+    this.filter = val;
   }
 
   getBooksByTitle(item) {
