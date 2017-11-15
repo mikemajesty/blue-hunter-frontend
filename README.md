@@ -1,6 +1,6 @@
 # Desafio Se você for um Dev Frontend
 
-## API
+## Aplicação
 [https://blue-hunter-frontend.herokuapp.com/](https://blue-hunter-frontend.herokuapp.com/)
 
 ### Como executar o projeto
