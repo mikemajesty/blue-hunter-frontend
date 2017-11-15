@@ -1,4 +1,4 @@
-# Desafio Se você for um Dev Backend
+# Desafio Se você for um Dev Frontend
 
 ## API
 [https://blue-hunter-frontend.herokuapp.com/](https://blue-hunter-frontend.herokuapp.com/)
