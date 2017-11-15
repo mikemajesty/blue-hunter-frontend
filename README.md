@@ -1,7 +1,7 @@
 # Desafio Se você for um Dev Backend
 
 ## API
-[link](https://blue-hunter-frontend.herokuapp.com/)
+[https://blue-hunter-frontend.herokuapp.com/](https://blue-hunter-frontend.herokuapp.com/)
 
 ### Como executar o projeto
 ```ng server```
