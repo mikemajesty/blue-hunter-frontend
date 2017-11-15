@@ -18,7 +18,7 @@
 ####  Utilizei um template do pronto com o less já configurado [template](https://github.com/angular/angular-cli), esse template  possui muitas configurações iniciais que facilitam muito no desenvolvimento.
 
 #### Framework CSS
-#### O Bootstrap foi escolhido pela minha experiencia, quantidade de bons exemplos e agilidade que possuo com o mesmo.
+#### O Bootstrap foi escolhido pela minha experiência, quantidade de bons exemplos e agilidade que possuo com o mesmo.
 
 ## Observaçes
 #### As imagens utilizadas nas capas dos livros foram criadas no site [canva](https://www.canva.com/pt_br/criar/capa-livro/)
